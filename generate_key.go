@@ -25,7 +25,7 @@ func GenerateKey(conn redis.Conn) (string, error) {
 		return "", err
 	}
 	for keyExist {
-		key = betterguid.New()[3:13] //get a string by the length 10
+		key = betterguid.New()[5:15] //get a string by the length 10
 		keyExist, err = CheckKeyExist(conn, key)
 		if err != nil {
 			return "", err
