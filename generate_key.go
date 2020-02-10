@@ -42,6 +42,7 @@ func GenerateKey(conn redis.Conn) (string, error) {
 
 func (kgs *KeyGeneratorService) Generate() {
 	conn, err := NewRedisConn()
+	defer conn.Close()
 	if err != nil {
 		log.Fatal(err)
 	}
