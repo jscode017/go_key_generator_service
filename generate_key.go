@@ -18,6 +18,7 @@ func NewKeyGenerator() *KeyGeneratorService {
 		Keys: make([]string, 0),
 	}
 }
+
 func GenerateKey(conn redis.Conn) (string, error) {
 	key := betterguid.New()[5:15] //get a string by the length 10
 	keyExist, err := CheckKeyExist(conn, key)
@@ -68,7 +69,6 @@ func (kgs *KeyGeneratorService) Generate() {
 		}
 	}
 }
-
 func (kgs *KeyGeneratorService) GetKey() string {
 	kgs.Lock()
 	defer kgs.Unlock()
